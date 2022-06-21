@@ -1,6 +1,7 @@
 # investimentos é um projeto feito com Django
 
 Sistema para controle de investimentos.
+
 I -A data de criação de um investimento pode ser hoje ou uma data no passado.
 II - Um investimento não deve ser ou se tornar negativo.
 
