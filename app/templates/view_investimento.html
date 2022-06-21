@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load l10n %}
+
+{% block title %}Investimentos{% endblock %} 
+
+{% block content %}
+
+    <table style="width: 90%;">
+        <thead>
+            <tr>
+                <td colspan="9">
+                    Investimentos 
+                </td>
+            </tr>
+            <tr>
+                <td>Nome</td>
+                <td>Valor</td>
+                <td>Valor Final</td>
+                <td>Lucro Liquido</td>
+                <td>Lucro Bruto</td>
+                <td>Rendimento</td>
+                <td>Imposto %</td>
+                <td>Data de Entrada</td>
+                <td>Data de Saida</td>
+            </tr>
+        </thead>
+        <tbody>
+            </tr>
+                <td>{{ investimentos.nome }}</td>
+                <td>{{ investimentos.valor|floatformat:2 }}</td>
+                <td>{{ valorfinal|floatformat:2 }}</td>
+                <td>{{ lucroliquido|floatformat:2 }}</td>
+                <td>{{ lucrobruto|floatformat:2 }}</td>
+                <td>{{ rendimento|floatformat:2 }}</td>
+                <td>{{ imposto }}</td>
+                <td>{{ investimentos.data_entrada }}</td>
+                <td>{{ investimentos.data_saida }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table>
+        <thead>
+            <tr>
+                <td>Evento</td>
+                <td>Valores</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Total investido</td>
+                <td>${{ investimentos.valor|floatformat:2 }}</td>
+            </tr>
+            <tr>
+                <td>Total ganho em juros</td>
+                <td>${{lucrobruto|floatformat:2}}</td>
+            </tr>
+            <tr>
+                <td>Imposto</td>
+                <td>${{valorimposto|floatformat:2}}</td>
+            </tr>
+            <tr>
+                <td>Total</td>
+                <td>${{valorfinal|floatformat:2}}</td>
+            </tr>
+        </tbody>
+    </table>
+    
+{% endblock %}

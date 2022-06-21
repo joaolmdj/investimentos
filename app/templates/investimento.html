@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}Investimentos{% endblock %} 
+
+{% block content %}
+
+    <table style="width: 90%;">
+        <thead>
+            <tr>
+                <td colspan="9">
+                    Investimentos 
+                    <a href="{{id}}/create" style="float: right; margin: auto; color: black; margin-right: 10px;"><i class="fa-solid fa-plus fa-lg"></i></a>
+                </td>
+            </tr>
+            <tr>
+                <td>Nome</td>
+                <td>Valor</td>
+                <td>Data de Entrada</td>
+                <td>Data de Saida</td>
+                <td>Ações</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for investimento in page.object_list %}
+                <tr>
+                    <td>{{ investimento.nome }}</td>
+                    <td>{{ investimento.valor }}</td>
+                    <td>{{ investimento.data_entrada }}</td>
+                    <td>{{ investimento.data_saida }}</td>
+                    <td>
+                        <a href="{{ investimento.id }}/update"><i class="fa-solid fa-gear fa-lg" style="color: #292929"></i></a>
+                        <a href="{{ investimento.id }}/delete" type="button" class="btn btn-link btnDel"><i class="fa-solid fa-circle-xmark fa-lg" style="color: #292929"></i></a>
+                        <a href="{{ investimento.id }}/view"><i class="fa-solid fa-eye fa-lg" style="color: #292929"></i></a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="page-links" style='text-align: center; margin-top: 10px;'>
+        {% if page.has_previous %}
+            <a href="?page={{page.previous_page_number}}"><i class="fa-solid fa-arrow-left">Anterior</i></a>
+        {% endif %}
+        {% if page.paginator.num_pages %}
+            <span class="current">
+                {{ page.number }} de {{ page.paginator.num_pages }}
+            </span>
+            {% endif %}
+        {% if page.has_next %}
+            <a href="?page={{page.next_page_number}}"><i class="fa-solid fa-arrow-right">Próximo</i></a>
+        {% endif %}
+    </div>
+    
+{% endblock %}

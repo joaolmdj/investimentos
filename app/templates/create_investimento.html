@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}Investimentos{% endblock %} 
+
+{% block content %}
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <table>
+            <thead>
+                <tr>
+                    <td>Nome</td>
+                    <td>Valor</td>
+                    <td>Data de Entrada</td>
+                    <td>Data de Saida</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ form.nome }}</td>
+
+                    <td>{{ form.valor }}</td>
+
+                    <td>{{ form.data_entrada }}</td>
+
+                    <td>{{ form.data_saida }}</td>
+
+                    <div style="display: none;">
+                        {{ form.proprietario_id }}
+                    </div>
+                </tr>
+            </tbody>
+        </table>
+        <div style="text-align: center;">
+            </br><input type="submit" class="btn btn-primary" value="Salvar">
+        </div>
+    </form>
+    
+{% endblock %}

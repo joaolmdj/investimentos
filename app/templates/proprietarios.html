@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}Proprietarios{% endblock %} 
+
+{% block content %}
+
+    <table>
+        <thead>
+            <tr>
+                <td colspan="3">
+                    Proprietario 
+                </td>
+            </tr>
+            <tr>
+                <td>Nome</td>
+                <td>Email</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for proprietario in proprietarios %}
+                <tr>
+                    <td><a href="/investimento/{{proprietario.id}}">{{ proprietario.nome }} {{ proprietario.sobrenome}}</a></td>
+                    <td>{{ proprietario.email }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %} 
